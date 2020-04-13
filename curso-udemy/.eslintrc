@@ -1,0 +1,6 @@
+/*
+* Esto para que se puedan ver los errores de sintexis del código
+*/
+{
+    "extends": "react-app"
+}
