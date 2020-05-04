@@ -1,0 +1,15 @@
+1-Montaje
+    •Se ejecuta siempre y sólo lo hace una vez.
+    •Construye el componente con su estado inicial
+    •Obtiene las props
+    •Bindear los métodos de la clase (como buena práctica, métodos de clases que accedan al contexto)
+    •Primera ejecución del Render
+
+2-Actualización
+    •Cada vez que se le envían Props o se actuliza el estado del componente
+    •Cuando es necesario renderizarse para reflejar los cambios
+
+3-Desmontaje
+    •Eliminación de Listeners
+    •Eliminación de referencias al DOM
+    •De esta forma evitaremos que se produzca una excepción si intentamos acceder a un elemento que ya no se encuentra disponible.

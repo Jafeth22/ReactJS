@@ -33,7 +33,7 @@ class Articulo extends Component {
         return (
             <section>
                 <h2>{title}</h2>
-                {autor && <p><em>Escrito por {autor}</em></p>}
+                <p><em>Escrito por {(autor.length === 0) ? 'Anónimo' : autor}</em></p>
                 <Box>{date}</Box>
                 <article>
                     {children/**Obtiene todas las etiquetas que se escriban dentro de la ETIQUETA CONTRUIDA*/}
@@ -55,6 +55,7 @@ class App extends Component {
                 <h4>Children Props</h4>
                 <Box>Hola Children</Box>
                 <Articulo
+                    autor=''
                     date={new Date().toLocaleDateString()/*Devuelve la fecha de la localización*/}
                     title='Prueba Artículo'
                 >
