@@ -1,20 +1,29 @@
 import React, { Component/*, PureComponent */} from 'react';
 import PropTypes from 'prop-types';
-
+//---------------------------------------------------------------------------
+// Elementos del ciclo de vida de actualización del Componente
+//---------------------------------------------------------------------------
 /**
+  * •COMPONENT WILL RECEIVE PROPS
   * Se ejecuta cuando el componente recibe nuevas props
   * Va a actualizar su STATE
-  * 
   * Actualiza el contenido del componente
   * --------------------------------------------------------------------------
-  * SHOULD COMPONENT UPDATE
+  * •SHOULD COMPONENT UPDATE
   * Se ejecuta antes de actualizar el componente
   * Determina si el componente de debe de actualizar el RENDER
-  * NO SE LLAMA AL SETSTATE
+  * NO se llama al setState
   * --------------------------------------------------------------------------
-  * COMPONENT WILL UPDATE
+  * •COMPONENT WILL UPDATE
   * NO se EJECUTA si el shouldComponentUpdate devuelve FALSE
   * Se ejecuta antes de actualizar el componente
+  * NO se llama al setState
+  * --------------------------------------------------------------------------
+  * •COMPONENT DID UPDATE
+  * Se ejecuta tras actualizar el componente
+  * Usar el nuevo DOM o llamadas externas
+  * NO se llama al setState
+  * Se tiene el método resultante del render
   */
 const imgs = {
     dog: 'https://bit.ly/2SemxLt'
@@ -29,37 +38,37 @@ const animales = Object.keys(imgs);
  */
 class AnimalImage extends Component/*PureComponent*/ {
     state = {src: imgs[this.props.animal]}
-
+    //--------------------------------------------------------------
+    /**
+     * •nextProps pueden ser las mismas props que tenemos
+     * pero entrará igualmente a este método
+     * •Nuevas props no quiere decir que sean distintas a las
+     * actuales
+     */
     componentWillReceiveProps(nextProps){
-        /**
-         * •nextProps pueden ser las mismas props que tenemos
-         * pero entrará igualmente a este método
-         * •Nuevas props no quiere decir que sean distintas a las
-         * actuales
-         */
         console.clear();
         console.log('1. componentWillReceiveProps');
         console.log(nextProps);
         this.setState({src: imgs[nextProps.animal]});
     }
-
+    //--------------------------------------------------------------
     /**
      * Devuelve por defecto BOOLEANO
      * Si no existe el método, devuelve true por defecto
      * Si es TRUE, actualiza el RENDER, de los contrario, no lo actualiza
      */
-        shouldComponentUpdate(nextProps){
+    shouldComponentUpdate(nextProps){
         console.log('2. shouldComponentUpdate', nextProps);
         //console.log('Anterior: ', this.props.animal);
         //console.log('Nuevo: ', nextProps.animal);
         return this.props.animal !== nextProps.animal;
     }
-
+    //--------------------------------------------------------------
     componentWillUpdate(nextProps, nextState){
         console.log('3 componentWillUpdate', nextProps, nextState);
         const img = document.querySelector('img');
         //Justo después de enviar este MSJ, react actualiza a la imagen solicitada 
-        console.log('from img element: ', {alt: img.alt});
+        console.log('3. From img element: ', {alt: img.alt});
         //Web console API
         img.animate(
         [
@@ -75,7 +84,32 @@ class AnimalImage extends Component/*PureComponent*/ {
             easing: 'ease'
         })
     }
-
+    //--------------------------------------------------------------
+    /**
+     * Se ejecuta tras actualizar el componente
+     * Usar el nuevo DOM o llamadas externas
+     * NO se llama al setState
+     * Se tiene el método resultante del render
+     */
+    componentDidUpdate(prevProps, prevState){
+        console.log('4. componentDidMount', prevProps, prevState);
+        const img = document.querySelector('img');
+        img.animate(
+        [
+            {
+                filter: 'blur(2px)'
+            }
+            ,{
+                filter: 'blur(0px)'
+            }
+        ]
+        , {
+            duration: 1500,
+            easing: 'ease'
+        })
+        console.log('4. Elemento img', {alt: img.alt});
+    }
+    //--------------------------------------------------------------
     render(){
         console.log('-> render (AnimalImage)');
         return(

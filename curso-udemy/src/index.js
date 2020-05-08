@@ -4,7 +4,7 @@ import './index.css';
 //import App from './App';
 //import App from './App2';
 //import App from './Apps//App3_RenderCondifcional';
-import App from './Apps/App10_CompWillReceiveProps';
+import App from './Apps/App13_ComposicionVsHerencia';
 
 import * as serviceWorker from './serviceWorker';
 
