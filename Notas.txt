@@ -39,3 +39,6 @@ INSTALANDO REACT Y CREADO PROYECTOS
 npm install -g create-react-app
 •Para crear PROYECTOS
 create-react-app nombreProyecto
+NOTA: No se permiten mayúsculas en los nombres
+•Correr proyecto
+npm start
