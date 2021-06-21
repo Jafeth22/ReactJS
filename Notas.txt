@@ -1,7 +1,10 @@
 --------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
 
+npm install -g create-react-app = Este comando instalará de manera global el paquete create-react-app.
+create-react-app = Verifica que el paquete se haya instalado correctamente
 create-react-app nombre-del-proyecto = Crear el proyecto de React
+npm start = Para correr la app de React.
 
 --------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------
