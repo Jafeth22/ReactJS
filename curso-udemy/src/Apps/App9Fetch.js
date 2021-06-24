@@ -14,6 +14,12 @@ class FetchExample extends Component {
             const {bpi} = data; //Obtiene la propiedad BPI (en este caso) de los datos retornados en la función
             this.setState({bpi})
         })
+        //Este es similar, solamente que se deberá de convertir la funcion en asyn
+        /*
+            const api_call = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+            const {bpi} = await api_call.json();
+            console.log(['Resultado', api_call, bpi]);
+        */
     }
 
     /**
