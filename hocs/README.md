@@ -3,7 +3,7 @@
 To know more about this topic, read the documentation on its oficial website:
 https://es.reactjs.org/docs/higher-order-components.html
 
-## Packages to use
+## Packages to install
 ```
     npm install axios
 ```
