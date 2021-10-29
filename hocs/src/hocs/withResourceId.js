@@ -14,12 +14,21 @@ const withResourceId = (WrappedComponent) => {
         const [resource, setResource] = useState(null);
 
         useEffect(() => {
-            axios.get(`http://jsonplaceholder.typicode.com/${resourceName}/${resourceId}`)
-                .then(res => setResource(res.data))
+            getResourceValues();
         }, []);
 
-        if (!resource) return "Loading..."
+        const getResourceValues = async () => {
+            try {
+                const url = `http://jsonplaceholder.typicode.com/${resourceName}/${resourceId}`
+                const response = await axios.get(url);
+                setResource(response.data);
+            } catch (error) {
+                const errorMsg = {error: "Something happened, please, check you URL and try again, please"}
+                setResource(errorMsg);
+            }
+        };
 
+        if (!resource) return "Loading...";
 
         return <WrappedComponent resource={resource} {...props} />
     }
