@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const Resource = (props) => {
-    const [flagProps, setFlagProps] = useState(true);
-    const { resource } = props;
+/**
+ * Here just will render the information, nothing about the logic
+ */
+const Resource = ({ resource, ...props }) => {
+    const {colorName} = props;
 
-    useEffect(() => {
-        setFlagProps(resource.hasOwnProperty("name"));
-    });
-
-    return(
-        flagProps ?
-            (
-                <>
-                    <h3>Name: {resource.name} </h3>
-                    <h3>Username: {resource.username}</h3>
-                    <h4>Email: {resource.email}</h4>
-                </>
-            )
-            :
-            (
-                <>
-                    <span>{resource.error}</span>
-                </>
-            )
+    return (
+        <div style={{background: colorName}} >
+            <h3>Name: {resource.name} </h3>
+            <h3>Username: {resource.username}</h3>
+            <h4>Email: {resource.email}</h4>
+        </div>
     );
 }
 

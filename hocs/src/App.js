@@ -12,8 +12,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1> Learn React - Hocs </h1>
-        <CurrentUser resourceName="users" resourceId={1}/>
-        <CurrentUser resourceName="comments" resourceId={1}/>
+        <CurrentUser resourceName="users" resourceId={1} colorName="red"/>
+        <br/>
+        <CurrentUser resourceName="comments" resourceId={1} colorName="green"/>
+        <br/>
       </header>
     </div>
   );

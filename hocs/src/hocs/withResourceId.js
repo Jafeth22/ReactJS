@@ -5,6 +5,8 @@ import axios from 'axios'
  * This is the way that we use to transfor the original (wrappedComponent)
  * to another new component.
  * 
+ * Here there will be only the logic
+ * 
  * @param {T} WrappedComponent Name of the component
  * @returns To another new component
  */
@@ -24,11 +26,12 @@ const withResourceId = (WrappedComponent) => {
                 setResource(response.data);
             } catch (error) {
                 const errorMsg = {error: "Something happened, please, check you URL and try again, please"}
-                setResource(errorMsg);
+                setResource({...resource, error: errorMsg})
             }
         };
 
         if (!resource) return "Loading...";
+        if (resource.error) return "Error Message"; 
 
         return <WrappedComponent resource={resource} {...props} />
     }
